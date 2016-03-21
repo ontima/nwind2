@@ -1,12 +1,23 @@
 var app = angular.module('nwind', []);
 
 app.controller('productsCtrl', function($scope, $http) {
-	$http.get('/api/products')
-	.then(function(response) {
-		return response.data
-	})
-	.then(function(data){
-		console.log("data: ", data);
-		$scope.products = data;
-	})
+
+	$scope.getProducts = function() {
+		$http.get('/api/products')
+		.then(function(response) {
+			$scope.products = response.data;
+		});
+	};
+
+	$scope.addProduct = function(product) {
+		$http.post('/api/products', product)
+		.then(function() {
+			$scope.getProducts();
+		});
+	};
+
+	$scope.getProducts();
+
 });
+
+

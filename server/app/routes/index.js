@@ -17,8 +17,8 @@ router.get('/products', function(req, res, next) {
   // create a new product
 router.post('/products', function(req, res, next){
   	var newProduct = new Product({
-  		name: req.body.productName,
-  		priority: req.body.productPriority 
+  		name: req.body.name,
+  		priority: req.body.priority 
   	});
 
   	newProduct.save()
