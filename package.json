@@ -1,0 +1,23 @@
+{
+  "name": "nwind2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch server -e js,html server/main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.2",
+    "bluebird": "^3.3.4",
+    "body-parser": "^1.15.0",
+    "bootstrap": "^3.3.6",
+    "chalk": "^1.1.1",
+    "express": "^4.13.4",
+    "http": "0.0.0",
+    "mongoose": "^4.4.8",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.3.0"
+  }
+}

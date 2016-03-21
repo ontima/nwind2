@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NWind Spa</title>
+    <link href="/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="/style.css" rel="stylesheet" />
+    <script src='/angular/angular.js'></script>
+    <script src='/script.js'></script>
+
+  </head>
+  <body ng-app="nwind">
+
+    <div class="container-fluid">
+    	<h2>Welcome to NWind Spa</h2>
+	<div class="row">
+		<div class="col-md-12">
+			<form action="/api/products" method="POST">
+				<div class="form-group">				 
+					<label for="productName">
+						Product
+					</label>
+					<input name="productName" type="text" class="form-control" id="productName" autocomplete="off">
+				</div>
+				<div class="form-group">
+					<label for="productPriority">
+						Priority
+					</label>
+					<input name="productPriority" type="text" class="form-control" id="productPriority" autocomplete="off">
+				</div>
+				<button type="submit" class="btn btn-default">
+					Save
+				</button>
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table" ng-controller="productsCtrl">
+				<thead>
+					<tr>
+						<th>
+							Name
+						</th>
+						<th>
+							Priority
+						</th>
+						<th>
+							Actions
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="product in products">
+						<td>
+							{{ product.name }}
+						</td>
+						<td>
+							{{ product.priority }}
+						</td>
+						<td>
+							Default
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<!--    // <script src="js/jquery.min.js"></script>
+    // <script src="js/bootstrap.min.js"></script>
+    // <script src="js/scripts.js"></script> -->
+ 
+  </body>
+</html>
