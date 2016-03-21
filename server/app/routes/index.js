@@ -4,7 +4,6 @@ const router = require('express').Router();
 module.exports = router;
 
 var Product = require('../../db/models').Product;
-console.log("Product: " , Product);
 
 router.get('/products', function(req, res, next) {
 	Product.find({}).sort({priority: 1})
@@ -15,32 +14,29 @@ router.get('/products', function(req, res, next) {
 });
 
   // create a new product
-router.post('/products', function(req, res, next){
+router.post('/product', function(req, res, next){
   	var newProduct = new Product({
   		name: req.body.name,
   		priority: req.body.priority 
   	});
 
   	newProduct.save()
-  	.then(function(product){
-  		console.log(product);
-  		res.send(product);
+  	.then(function(response){
+  		res.send(response);
   	})
   	.catch(next);
-  	// var product = req.body.productName;
-  	// var priority = req.body.productPriority;
-  	// console.log("product: ", product);
-  	// console.log("priority: ", priority);
-
-  	// return Product.save({
-  	// 	name: req.body.productName,
-  	// 	priority: req.body.productPriority
-  	// })
-  	// .then(function(product) {
-  	// 	res.redirect('/');
-  	// });
   });
 
+router.delete('/product/:id', function(req, res, next){
+	console.log("deleting id: ", req.params.id);
+
+	Product.findByIdAndRemove(req.params.id)
+	.then(function(response){
+		console.log("after delete: ", response);
+		res.send(response);
+	})
+	.catch(next);
+});
 
 // Make sure this is after all of
 // the registered routes!

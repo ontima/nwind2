@@ -61,7 +61,9 @@
 							{{ product.priority }}
 						</td>
 						<td>
-							Default
+                      <button class="btn btn-default btn-xs" ng-click='deleteProduct(product)'>
+                          <span class="glyphicon glyphicon-remove"></span>
+                      </button>
 						</td>
 					</tr>
 				</tbody>

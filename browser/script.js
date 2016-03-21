@@ -10,10 +10,19 @@ app.controller('productsCtrl', function($scope, $http) {
 	};
 
 	$scope.addProduct = function(product) {
-		$http.post('/api/products', product)
+		$http.post('/api/product', product)
 		.then(function() {
 			$scope.getProducts();
 		});
+	};
+
+	$scope.deleteProduct = function(product) {
+		var toDelete = product._id;
+		console.log("toDelete: ", toDelete);
+		$http.delete('/api/product/' + toDelete)
+		.then(function(response){
+			$scope.getProducts();
+		})
 	};
 
 	$scope.getProducts();
