@@ -13,6 +13,11 @@ require('./configure')(app);
 app.use('/api', require('./routes'));
 
 
+//I wouldn't have a wildcard here..
+app.get('/', function (req, res) {
+    res.sendFile(app.get('indexHTMLPath'));
+});
+
 /*
  This middleware will catch any URLs resembling a file extension
  for example: .js, .html, .css
@@ -29,13 +34,10 @@ app.use(function (req, res, next) {
 
 });
 
-app.get('/*', function (req, res) {
-    res.sendFile(app.get('indexHTMLPath'));
-});
 
 // Error catching endware.
 app.use(function (err, req, res, next) {
     console.error(err, typeof next);
-    console.error(err.stack)
+    console.error(err.stack);
     res.status(err.status || 500).send(err.message || 'Internal server error.');
 });

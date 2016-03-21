@@ -23,6 +23,7 @@ app.controller('productsCtrl', function($scope, $http) {
 		});
 	};
 
+  //restful routes -- /products/:id not /product/:id
 	$scope.deleteProduct = function(product) {
 		var toDelete = product._id;
 		//console.log("toDelete: ", toDelete);
@@ -44,6 +45,7 @@ app.controller('productsCtrl', function($scope, $http) {
 		$scope.updatePriority(product, newPriority);
 	};
 
+  //does this need to be on the scope
 	$scope.updatePriority = function(product, priority) {
 		//console.log("updating priority: ", priority);
 		//console.log("product id : ", product._id);
@@ -53,6 +55,7 @@ app.controller('productsCtrl', function($scope, $http) {
 		});
 	};
 
+  //does this need to be on the scope? 
 	$scope.getProducts();
 
 });

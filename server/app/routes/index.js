@@ -1,4 +1,9 @@
 'use strict';
+//this file should probably be renamed products.js
+//make your routes restful
+// /products - GET
+// /products - POST
+// /products/:id PUT or PATCH
 
 const router = require('express').Router();
 module.exports = router;
@@ -48,6 +53,7 @@ router.put('/update/:id/:priority', function(req, res, next) {
 	.catch(next);
 });
 
+//this probably belongs in another file-- maybe? not sure
 // Make sure this is after all of
 // the registered routes!
 router.use(function (req, res) {
