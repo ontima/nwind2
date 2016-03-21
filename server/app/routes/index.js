@@ -28,11 +28,21 @@ router.post('/product', function(req, res, next){
   });
 
 router.delete('/product/:id', function(req, res, next){
-	console.log("deleting id: ", req.params.id);
-
 	Product.findByIdAndRemove(req.params.id)
 	.then(function(response){
-		console.log("after delete: ", response);
+		res.send(response);
+	})
+	.catch(next);
+});
+
+router.put('/update/:id/:priority', function(req, res, next) {
+	console.log("updating: ", req.params.id, req.params.priority);
+	Product.findById(req.params.id)
+	.then(function(product){
+		product.priority = req.params.priority;
+		return product.save();
+	})
+	.then(function(response){
 		res.send(response);
 	})
 	.catch(next);

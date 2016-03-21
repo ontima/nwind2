@@ -15,6 +15,9 @@
 
     <div class="container-fluid" ng-controller="productsCtrl">
     	<h2>Welcome to NWind Spa</h2>
+    	 <div ng-show="displayError" class="alert alert-danger">
+          Processing Error
+        </div>
 	<div class="row">
 		<div class="col-md-12">
 			<form >
@@ -64,7 +67,17 @@
                       <button class="btn btn-default btn-xs" ng-click='deleteProduct(product)'>
                           <span class="glyphicon glyphicon-remove"></span>
                       </button>
-						</td>
+
+                    <button class="btn btn-default btn-xs" ng-show="!$last" ng-click='moveUp(product)'>
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+
+                    <button class="btn btn-default btn-xs" ng-show="!$first" ng-click='moveDown(product)'>
+                        <span class="glyphicon glyphicon-minus"></span>
+                    </button>
+
+                    <span class="badge"> {{ product.priority }} </span>
+                </td>
 					</tr>
 				</tbody>
 			</table>
