@@ -36,7 +36,7 @@ router.delete('/product/:id', function(req, res, next){
 });
 
 router.put('/update/:id/:priority', function(req, res, next) {
-	console.log("updating: ", req.params.id, req.params.priority);
+	//console.log("updating: ", req.params.id, req.params.priority);
 	Product.findById(req.params.id)
 	.then(function(product){
 		product.priority = req.params.priority;

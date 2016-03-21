@@ -25,7 +25,7 @@ app.controller('productsCtrl', function($scope, $http) {
 
 	$scope.deleteProduct = function(product) {
 		var toDelete = product._id;
-		console.log("toDelete: ", toDelete);
+		//console.log("toDelete: ", toDelete);
 		$http.delete('/api/product/' + toDelete)
 		.then(function(response){
 			$scope.getProducts();
@@ -33,20 +33,20 @@ app.controller('productsCtrl', function($scope, $http) {
 	};
 
 	$scope.moveUp = function(product) {
-		console.log("moveUp called: ", product.name);
+		//console.log("moveUp called: ", product.name);
 		var newPriority = product.priority + 1;
 		$scope.updatePriority(product, newPriority);
 	};
 
 	$scope.moveDown = function(product) {
-		console.log("moveDown called: ", product.name);
+		//console.log("moveDown called: ", product.name);
 		var newPriority = product.priority - 1;
 		$scope.updatePriority(product, newPriority);
 	};
 
 	$scope.updatePriority = function(product, priority) {
-		console.log("updating priority: ", priority);
-		console.log("product id : ", product._id);
+		//console.log("updating priority: ", priority);
+		//console.log("product id : ", product._id);
 		$http.put('/api/update/' + product._id + '/' + priority)
 		.then(function(response){
 			$scope.getProducts();
